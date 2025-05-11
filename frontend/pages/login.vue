@@ -42,13 +42,33 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
+import type { LoginResponse } from '@/types/Auth';
 
+const { setToken } = useAuth()
 const email = ref('')
 const password = ref('')
 
 const handleLogin = async () => {
-  // TODO: APIと連携
-  console.log('ログイン情報', { email: email.value, password: password.value })
+  try {
+    const res = await apiFetch<LoginResponse>('/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: {
+        email: email.value,
+        password: password.value,
+      },
+    });
+
+    setToken(res.token);
+
+    // ページ遷移
+    await navigateTo('/');
+  } catch (error) {
+    alert('ログイン失敗');
+    console.error(error);
+  }
 }
 </script>
