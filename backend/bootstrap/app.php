@@ -16,11 +16,6 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->web([
 
         ]);
-
-        $middleware->api([
-            EnsureFrontendRequestsAreStateful::class,
-            'auth:sanctum',
-        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+dist/
+.nuxt/
+.nitro/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.*
+
+# Laravel
+/vendor
+/storage
+/public/storage
+bootstrap/cache
+
+# IDE
+.vscode/
+.idea/

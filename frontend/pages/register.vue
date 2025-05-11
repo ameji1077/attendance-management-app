@@ -57,14 +57,9 @@ const password = ref('')
 
 const handleRegister = async () => {
   try {
-    await $fetch('http://localhost:8000/sanctum/csrf-cookie', {
-      credentials: 'include',
-    });
-
     await $fetch('/api/register', {
       baseURL: 'http://localhost:8000',
       method: 'POST',
-      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
